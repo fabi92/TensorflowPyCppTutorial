@@ -6,7 +6,7 @@ Therefore, please refer to the official installation guide.
 [Tensorflow Python Installation](https://www.tensorflow.org/versions/r0.11/get_started/os_setup.html#pip-installation)
 
 ## Install Tensorflow C++ With Cmake
-This is thoroughly describe in this guid.
+This is thoroughly describe in this guide. Note to build tensorflow with the flag -c opt --config=cuda to have it run on the GPU.
 [Tensorflow Cpp Installation](https://github.com/cjweeks/tensorflow-cmake)
 
 ## Note when configuring, please take care to choose the right version for your graphics card. 

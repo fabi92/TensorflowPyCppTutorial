@@ -1,4 +1,3 @@
-
 from sys import platform
 
 import numpy as np
@@ -9,7 +8,6 @@ import tensorflow as tf
 from tensorflow.python.tools import freeze_graph
 
 import h5py
-from utils import *
 
 def augment_patch(patch):
 
@@ -82,8 +80,6 @@ def main():
 
     data_shape = (data.shape[1], data.shape[2], data.shape[3])
 
-    #cae = buildFullyCAEStride(data_shape, feat_dim)
-    #cae = build_graph(data_shape, feat_dim)
     cae = buildFC_AEDynamic(shape=data_shape, embedding_size=feat_dim, num_convs=3, stride=(2, 2), ksize=(4, 4))
 
     optimizer = tf.train.AdamOptimizer(0.0001).minimize(cae['cost'])
