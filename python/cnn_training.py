@@ -9,6 +9,17 @@ from tensorflow.python.tools import freeze_graph
 
 import h5py
 
+def show_rgbd_patch(patch, show = False):
+    r, g, b, d = cv2.split(patch)
+    blank = np.zeros((32, 64, 3), np.float32)
+    blank[:, 0:32] = cv2.merge((r, g, b))
+    blank[:, 32:64] = cv2.merge((d, d, d))
+    blank = cv2.resize(blank, (512, 256))
+    if show:
+        cv2.imshow("patch", blank)
+        cv2.waitKey()
+    return blank
+
 def augment_patch(patch):
 
     flip = np.random.randint(0, 3)
