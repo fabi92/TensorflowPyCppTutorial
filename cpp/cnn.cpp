@@ -133,11 +133,11 @@ int main(int argc, char *argv[])
 
 
     tensorflow::SessionOptions opts;
-    tensorflow::GPUOptions gpu_opts;
+    tensorflow::GPUOptions *gpu_opts = new tensorflow::GPUOptions();
 
     opts.config.set_allow_soft_placement(false); // Allow mixing CPU and GPU data
     gpu_opts.set_allow_growth(true);            // Don't hog the full GPU at once
-    opts.config.set_allocated_gpu_options(&gpu_opts);
+    opts.config.set_allocated_gpu_options(gpu_opts);
 
     tensorflow::Status status = tensorflow::NewSession(opts, &session);
     if(!status.ok()) cerr << "Could not creat new sessions: " << status.error_message() << endl;
